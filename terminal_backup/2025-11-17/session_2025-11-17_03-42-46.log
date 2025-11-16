@@ -1,0 +1,179 @@
+Script started on 2025-11-17 03:42:46+06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="66" LINES="28"]
+[?2004h[0;31m┌─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~/myproject[0;31m]
+[0;31m└──╼ [0m[01;33m$[0mcd ../
+[?2004l[?2004h[0;31m┌─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~[0;31m]
+[0;31m└──╼ [0m[01;33m$[0mc[Kcd chain
+[?2004l[?2004h[0;31m┌─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~/chain[0;31m]
+[0;31m└──╼ [0m[01;33m$[0m d [K[K[Kcd febric[K[K[K[K[Kabric-sample/test-network
+[?2004lbash: cd: fabric-sample/test-network: No such file or directory
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~/chain[0;31m]
+[0;31m└──╼ [0m[01;33m$[0mcd febr[K[K[Kabric-sample
+[?2004lbash: cd: fabric-sample: No such file or directory
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~/chain[0;31m]
+[0;31m└──╼ [0m[01;33m$[0mcd fabric-samples
+[?2004l[?2004h[0;31m┌─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~/chain/fabric-samples[0;31m]
+[0;31m└──╼ [0m[01;33m$[0mcd r[Ktest-network
+[?2004l[?2004h[0;31m┌─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~/chain/fabric-samples/test-network[0;31m]
+[0;31m└──╼ [0m[01;33m$[0mnetwork[K[K[K[K[K[K[K../[K[K[K./network.sh
+[?2004l[0;34mUsing docker and docker-compose[0m
+Usage: 
+  network.sh <Mode> [Flags]
+    Modes:
+      [0;32mprereq[0m - Install Fabric binaries and docker images
+      [0;32mup[0m - Bring up Fabric orderer and peer nodes. No channel is created
+      [0;32mup createChannel[0m - Bring up fabric network with one channel
+      [0;32mcreateChannel[0m - Create and join a channel after the network is created
+      [0;32mdeployCC[0m - Deploy a chaincode to a channel (defaults to asset-transfer-basic)
+      [0;32mcc[0m - chaincode functions, use "network.sh cc -h" for options
+      [0;32mdown[0m - Bring down the network
+
+    Flags:
+    Used with [0;32mnetwork.sh prereq[0m
+    -i     FabricVersion (default: '2.5.14')
+    -cai   Fabric CA Version (default: '1.5.15')
+
+    Used with [0;32mnetwork.sh up[0m, [0;32mnetwork.sh createChannel[0m:
+    -ca - Use Certificate Authorities to generate network crypto material
+    -cfssl <use CFSSL> -  Use CFSSL CA to generate network crypto material
+    -bft - Use Orderers with consensus type BFT (Not available in Fabric v2.x)
+    -c <channel name> - Name of channel to create (defaults to "mychannel")
+    -s <dbtype> - Peer state database to deploy: goleveldb (default) or couchdb
+    -r <max retry> - CLI times out after certain number of attempts (defaults to 5)
+    -d <delay> - CLI delays for a certain number of seconds (defaults to 3)
+    -verbose - Verbose mode
+
+    Used with [0;32mnetwork.sh deployCC[0m:
+    -c <channel name> - Name of channel to deploy chaincode to
+    -ccn <name> - Chaincode name.
+    -ccl <language> - Programming language of the chaincode to deploy: go, java, javascript, typescript
+    -ccv <version>  - Chaincode version. 1.0 (default), v2, version3.x, etc
+    -ccs <sequence>  - Chaincode definition sequence.  Must be auto (default) or an integer, 1 , 2, 3, etc
+    -ccp <path>  - File path to the chaincode.
+    -ccep <policy>  - (Optional) Chaincode endorsement policy using signature policy syntax. The default policy requires an endorsement from Org1 and Org2
+    -cccg <collection-config>  - (Optional) File path to private data collections configuration file
+    -cci <fcn name>  - (Optional) Name of chaincode initialization function. When a function is provided, the execution of init will be requested and the function will be invoked.
+
+    -h - Print this message
+
+ Possible Mode and flag combinations
+   [0;32mup[0m -ca -r -d -s -verbose
+   [0;32mup[0m -bft -r -d -s -verbose
+   [0;32mup createChannel[0m -ca -c -r -d -s -verbose
+   [0;32mup createChannel[0m -bft -c -r -d -s -verbose
+   [0;32mcreateChannel[0m -bft -c -r -d -verbose
+   [0;32mdeployCC[0m -ccn -ccl -ccv -ccs -ccp -cci -r -d -verbose
+
+ Examples:
+   network.sh up createChannel -ca -c mychannel -s couchdb
+   network.sh createChannel -c channelName
+   network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-javascript/ -ccl javascript
+   network.sh deployCC -ccn mychaincode -ccp ./user/mychaincode -ccv 1 -ccl javascript
+
+ NOTE: Default settings can be changed in network.config
+[?2004h[0;31m┌─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~/chain/fabric-samples/test-network[0;31m]
+[0;31m└──╼ [0m[01;33m$[0m./network.sh
+[?2004l[0;34mUsing docker and docker-compose[0m
+Usage: 
+  network.sh <Mode> [Flags]
+    Modes:
+      [0;32mprereq[0m - Install Fabric binaries and docker images
+      [0;32mup[0m - Bring up Fabric orderer and peer nodes. No channel is created
+      [0;32mup createChannel[0m - Bring up fabric network with one channel
+      [0;32mcreateChannel[0m - Create and join a channel after the network is created
+      [0;32mdeployCC[0m - Deploy a chaincode to a channel (defaults to asset-transfer-basic)
+      [0;32mcc[0m - chaincode functions, use "network.sh cc -h" for options
+      [0;32mdown[0m - Bring down the network
+
+    Flags:
+    Used with [0;32mnetwork.sh prereq[0m
+    -i     FabricVersion (default: '2.5.14')
+    -cai   Fabric CA Version (default: '1.5.15')
+
+    Used with [0;32mnetwork.sh up[0m, [0;32mnetwork.sh createChannel[0m:
+    -ca - Use Certificate Authorities to generate network crypto material
+    -cfssl <use CFSSL> -  Use CFSSL CA to generate network crypto material
+    -bft - Use Orderers with consensus type BFT (Not available in Fabric v2.x)
+    -c <channel name> - Name of channel to create (defaults to "mychannel")
+    -s <dbtype> - Peer state database to deploy: goleveldb (default) or couchdb
+    -r <max retry> - CLI times out after certain number of attempts (defaults to 5)
+    -d <delay> - CLI delays for a certain number of seconds (defaults to 3)
+    -verbose - Verbose mode
+
+    Used with [0;32mnetwork.sh deployCC[0m:
+    -c <channel name> - Name of channel to deploy chaincode to
+    -ccn <name> - Chaincode name.
+    -ccl <language> - Programming language of the chaincode to deploy: go, java, javascript, typescript
+    -ccv <version>  - Chaincode version. 1.0 (default), v2, version3.x, etc
+    -ccs <sequence>  - Chaincode definition sequence.  Must be auto (default) or an integer, 1 , 2, 3, etc
+    -ccp <path>  - File path to the chaincode.
+    -ccep <policy>  - (Optional) Chaincode endorsement policy using signature policy syntax. The default policy requires an endorsement from Org1 and Org2
+    -cccg <collection-config>  - (Optional) File path to private data collections configuration file
+    -cci <fcn name>  - (Optional) Name of chaincode initialization function. When a function is provided, the execution of init will be requested and the function will be invoked.
+
+    -h - Print this message
+
+ Possible Mode and flag combinations
+   [0;32mup[0m -ca -r -d -s -verbose
+   [0;32mup[0m -bft -r -d -s -verbose
+   [0;32mup createChannel[0m -ca -c -r -d -s -verbose
+   [0;32mup createChannel[0m -bft -c -r -d -s -verbose
+   [0;32mcreateChannel[0m -bft -c -r -d -verbose
+   [0;32mdeployCC[0m -ccn -ccl -ccv -ccs -ccp -cci -r -d -verbose
+
+ Examples:
+   network.sh up createChannel -ca -c mychannel -s couchdb
+   network.sh createChannel -c channelName
+   network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-javascript/ -ccl javascript
+   network.sh deployCC -ccn mychaincode -ccp ./user/mychaincode -ccv 1 -ccl javascript
+
+ NOTE: Default settings can be changed in network.config
+[?2004h[0;31m┌─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~/chain/fabric-samples/test-network[0;31m]
+[0;31m└──╼ [0m[01;33m$[0m./network.sh up
+[?2004l[0;34mUsing docker and docker-compose[0m
+[0;34mStarting nodes with CLI timeout of '5' tries and CLI delay of '3' seconds and using database 'leveldb' with crypto from 'cryptogen'[0m
+[0;34mLOCAL_VERSION=v2.5.14[0m
+[0;34mDOCKER_IMAGE_VERSION=v2.5.14[0m
+/home/yematekudusai/chain/fabric-samples/test-network/../bin/cryptogen
+[0;34mGenerating certificates using cryptogen tool[0m
+[0;34mCreating Org1 Identities[0m
++ cryptogen generate --config=./organizations/cryptogen/crypto-config-org1.yaml --output=organizations
+org1.example.com
++ res=0
+[0;34mCreating Org2 Identities[0m
++ cryptogen generate --config=./organizations/cryptogen/crypto-config-org2.yaml --output=organizations
+org2.example.com
++ res=0
+[0;34mCreating Orderer Org Identities[0m
++ cryptogen generate --config=./organizations/cryptogen/crypto-config-orderer.yaml --output=organizations
++ res=0
+[0;34mGenerating CCP files for Org1 and Org2[0m
+Creating peer0.org2.example.com ... 
+Creating orderer.example.com    ... 
+Creating peer0.org1.example.com ... 
+[2A[2KCreating orderer.example.com    ... [32mdone[0m[2B[3A[2KCreating peer0.org2.example.com ... [32mdone[0m[3B[1A[2KCreating peer0.org1.example.com ... [32mdone[0m[1BCONTAINER ID   IMAGE                               COMMAND                  CREATED         STATUS                  PORTS                                                                                                                             NAMES
+588d3767c39d   hyperledger/fabric-peer:latest      "peer node start"        4 seconds ago   Up Less than a second   0.0.0.0:7051->7051/tcp, :::7051->7051/tcp, 0.0.0.0:9444->9444/tcp, :::9444->9444/tcp                                              peer0.org1.example.com
+ba0002b24579   hyperledger/fabric-orderer:latest   "orderer"                4 seconds ago   Up Less than a second   0.0.0.0:7050->7050/tcp, :::7050->7050/tcp, 0.0.0.0:7053->7053/tcp, :::7053->7053/tcp, 0.0.0.0:9443->9443/tcp, :::9443->9443/tcp   orderer.example.com
+a0f07799446b   hyperledger/fabric-peer:latest      "peer node start"        4 seconds ago   Up Less than a second   0.0.0.0:9051->9051/tcp, :::9051->9051/tcp, 7051/tcp, 0.0.0.0:9445->9445/tcp, :::9445->9445/tcp                                    peer0.org2.example.com
+bb7591789b8c   hyperledger/fabric-peer:2.5         "peer node start"        4 days ago      Exited (0) 3 days ago                                                                                                                                     peer0.university.cert.com
+6aeb46d83e5a   hyperledger/fabric-peer:2.5         "peer node start"        4 days ago      Exited (2) 3 days ago                                                                                                                                     peer0.verifier.cert.com
+130742e7d6d5   couchdb:3.3                         "tini -- /docker-ent…"   4 days ago      Exited (0) 3 days ago                                                                                                                                     couchdb.verifier.cert.com
+de57cbe31faf   hyperledger/fabric-orderer:2.5      "orderer"                4 days ago      Exited (2) 3 days ago                                                                                                                                     orderer.cert.com
+a5647fdf72ca   couchdb:3.3                         "tini -- /docker-ent…"   4 days ago      Exited (0) 3 days ago                                                                                                                                     couchdb.university.cert.com
+[?2004h[0;31m┌─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~/chain/fabric-samples/test-network[0;31m]
+[0;31m└──╼ [0m[01;33m$[0m./network.sh down
+[?2004l[0;34mUsing docker and docker-compose[0m
+[0;34mStopping network[0m
+[31mERROR[0m: Top level object in './compose/docker/docker-compose-couch.yaml' needs to be an object not '<class 'NoneType'>'.
+Error: No such volume: docker_orderer.example.com
+Error: No such volume: docker_peer0.org1.example.com
+Error: No such volume: docker_peer0.org2.example.com
+[0;34mRemoving remaining containers[0m
+588d3767c39d
+ba0002b24579
+a0f07799446b
+[0;34mRemoving generated chaincode docker images[0m
+[?2004h[0;31m┌─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~/chain/fabric-samples/test-network[0;31m]
+[0;31m└──╼ [0m[01;33m$[0m[?2004l
+exit
+
+Script done on 2025-11-17 03:48:02+06:00 [COMMAND_EXIT_CODE="0"]
