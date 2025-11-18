@@ -1,0 +1,78 @@
+Script started on 2025-11-18 19:14:46+06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="66" LINES="28"]
+[?2004h[0;31m┌─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~/myproject[0;31m]
+[0;31m└──╼ [0m[01;33m$[0m#!/bin/bash
+
+echo "Simple Calculator"
+[7mecho "Enter first number:"[27m
+[7mread a[27m
+
+[7mecho "Enter second number:"[27m
+[7mread b[27m
+
+[7mecho "Select operation (+, -, *, /):"[27m
+[7mread op[27m
+
+[7mcase $op in[27m
+[7m    +) result=$((a + b)) ;;[27m
+[7m    -) result=$((a - b)) ;;[27m
+[7m    \*) result=$((a * b)) ;;[27m
+[7m    /) [27m
+[7m        if [ "$b" -eq 0 ]; then[27m
+[7m            echo "Error: Division by zero"[27m
+[7m            exit 1[27m
+[7m        fi[27m
+[7m        result=$((a / b))[27m
+[7m    ;;[27m
+[7m    *) [27m
+[7m        echo "Invalid operation"[27m
+[7m        exit 1[27m
+[7m    ;;[27m
+[7mesac[27m[7mecho "Result: $result"[27m[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[Aecho "Enter first number:"
+read a
+
+echo "Enter second number:"
+read b
+
+echo "Select operation (+, -, *, /):"
+read op
+
+case $op in
+    +) result=$((a + b)) ;;
+    -) result=$((a - b)) ;;
+    \*) result=$((a * b)) ;;
+    /) 
+        if [ "$b" -eq 0 ]; then
+            echo "Error: Division by zero"
+            exit 1
+        fi
+        result=$((a / b))
+    ;;
+    *) 
+        echo "Invalid operation"
+        exit 1
+    ;;
+esacecho "Result: $result"
+[?2004lSimple Calculator
+Enter first number:
+6
+Enter second number:
+10
+Select operation (+, -, *, /):
++ *
+Result: 60
+[?2004h[0;31m┌─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~/myproject[0;31m]
+[0;31m└──╼ [0m[01;33m$[0mchmod +x cla[K[Kalc.sh
+[?2004lchmod: cannot access 'calc.sh': No such file or directory
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~/myproject[0;31m]
+[0;31m└──╼ [0m[01;33m$[0m[7mchmod +x calc.sh[27m
+[7m./calc.sh[27m
+[A[A[C[C[C[C[C[Cchmod +x calc.sh
+./calc.sh
+[A
+[?2004lchmod: cannot access 'calc.sh': No such file or directory
+bash: ./calc.sh: No such file or directory
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[0;39myematekudusai[01;33m@[01;96mparrot[0;31m]─[[0;32m~/myproject[0;31m]
+[0;31m└──╼ [0m[01;33m$[0m[?2004l
+exit
+
+Script done on 2025-11-18 19:21:02+06:00 [COMMAND_EXIT_CODE="127"]
